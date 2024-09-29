@@ -1,14 +1,29 @@
 import { StatusBar } from 'expo-status-bar';
-import { StyleSheet, Text, View } from 'react-native';
+import { StyleSheet, View } from 'react-native';
+import { NavigationContainer } from '@react-navigation/native';
+import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
+
+import CountrySelectScreen from './screens/CountrySelectScreen';
+import CityListScreen from './screens/CityListScreen';
+
+import FetchListScreen from './screens/FetchListScreen';
+
+
+const Tab = createBottomTabNavigator();
 
 export default function App() {
   return (
-    <View style={styles.container}>
-      <Text>Open up App.js to start working on your app!</Text>
-      <StatusBar style="auto" />
-    </View>
+    <NavigationContainer>
+      <Tab.Navigator>
+      <Tab.Screen name="Country" component={CountrySelectScreen} />
+        <Tab.Screen name="City" component={CityListScreen} />
+        <Tab.Screen name="Map" component={FetchListScreen} />
+      </Tab.Navigator>
+    </NavigationContainer>
   );
 }
+
+
 
 const styles = StyleSheet.create({
   container: {
